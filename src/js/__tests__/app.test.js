@@ -1,4 +1,5 @@
-import GameSavingLoader, { GameSaving } from '../loader';
+import GameSavingLoader from '../loader';
+import GameSaving from '../save';
 
 it('test', async () => {
   const obj = JSON.stringify({
@@ -8,7 +9,7 @@ it('test', async () => {
       id: 1, name: 'Hitman', level: 10, points: 2000,
     },
   });
-  const objNew = new GameSaving(obj);
+  const objNew = new GameSaving(JSON.parse(obj));
   const save = await GameSavingLoader.load();
   expect(save).toEqual(objNew);
 });
